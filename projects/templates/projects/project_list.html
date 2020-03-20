@@ -1,0 +1,35 @@
+{% extends 'projects/base.html' %}
+{% load i18n %}
+{% block header_additional %}
+<style>
+	body {background-color: white;}
+	table {border-collapse: collapse;}
+	th {background-color: #444;color: white;}
+	tr:nth-child(even) {background-color: #f2f2f2;}
+	tr {border-bottom: solid 1px #ddd;}
+	tr:last-of-type {border-bottom: none}
+	td,th {border-left: solid 1px #888;border-right: solid 1px #888;}
+	th:first-of-type {border-left: none;}
+	th:last-of-type {border-right: none;}
+	td:first-of-type {border-left: none;}
+	td:last-of-type {border-right: none;}
+</style>
+{% endblock %}
+{% block content %}
+{% for object in object_list %}
+<div class="project">
+	<h1>{{ object.title }}</h1>
+	<p><h2>Probleme</h2><br>{{ object.problem }}</p>
+	<p><h2>Herausforderung</h2><br>{{ object.explanation }}</p>
+	<p><h2>Lösungsansatz</h2><br>{{ object.idea }}</p>
+	<p><h2>Betroffenengruppe</h2><br>{{ object.affected }}</p>
+	<p><h2>Stakeholder</h2><br>{{ object.stakeholder }}</p>
+	<p><h2>Slack-Channel</h2><br>{{ object.slack }}</p>
+	<p><h2>Kategorien</h2><br>{{ object.category }}</p>
+
+</div>
+{% empty %}
+<p>{% trans 'There are no projects available' %}</p>
+{% endfor %}
+{% endblock %}
+
