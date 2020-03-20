@@ -1,0 +1,28 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>{% trans '#WwirVsVirus' %} - {% trans 'Landing Page' %}</title>{% endblock %}
+    <link rel="stylesheet" href="/static/application/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/application/css/apply.css"/>
+    {% block header_additional %}{% endblock %}
+</head>
+{% endblock %}
+{% block body %}
+<body>
+{% block content_wrapper %}
+<div class="container card mt-3 mb-5">
+    <div class="card-body">
+        {% block content %}
+        <h1>Default page</h1>
+        This default pages has no content.
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
+{% endblock %}
+</body>
+</html>
+

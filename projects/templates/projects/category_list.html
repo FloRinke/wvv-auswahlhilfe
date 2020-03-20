@@ -1,0 +1,35 @@
+{% extends 'projects/base.html' %}
+{% load i18n %}
+{% block header_additional %}
+<style>
+	body {background-color: white;}
+	table {border-collapse: collapse;}
+	th {background-color: #444;color: white;}
+	tr:nth-child(even) {background-color: #f2f2f2;}
+	tr {border-bottom: solid 1px #ddd;}
+	tr:last-of-type {border-bottom: none}
+	td,th {border-left: solid 1px #888;border-right: solid 1px #888;}
+	th:first-of-type {border-left: none;}
+	th:last-of-type {border-right: none;}
+	td:first-of-type {border-left: none;}
+	td:last-of-type {border-right: none;}
+</style>
+{% endblock %}
+{% block content %}
+<table>
+	<thead>
+		<tr>
+			<th><Name/th>
+		</tr>
+	</thead>
+	<tbody>
+{% for object in object_list %}
+	<tr>
+		<td><a href="{% url 'projects:project-list-by-category' object.slug %}">{{ object.description }}</a></td>
+{% empty %}
+	<tr><td colspan="9">{% trans 'There are no categories' %}</td></tr>
+{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
+
